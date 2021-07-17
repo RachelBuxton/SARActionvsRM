@@ -32,8 +32,6 @@ Data_ActionPlansOnly<-Data_ActionPlansOnly[-which(Data_ActionPlansOnly$Recovery.
 Data_ActionPlansOnly$Cost..per.year.<-gsub("\\$", "", Data_ActionPlansOnly$Cost..per.year.)
 Data_ActionPlansOnly$Cost..per.year.<-gsub(",", "", Data_ActionPlansOnly$Cost..per.year.)
 Data_ActionPlansOnly$Cost..per.year.<-gsub("\\.", "", Data_ActionPlansOnly$Cost..per.year.)
-# Data_ActionPlansOnly$Cost..per.year.<-gsub("\\/year", "", Data_ActionPlansOnly$Cost..per.year.)
-# Data_ActionPlansOnly$Cost..per.year.<-gsub("[<]", "", Data_ActionPlansOnly$Cost..per.year.)
 
 #Make ranges into mean
 Data_ActionPlansOnly$Cost..per.year.<-ifelse(Data_ActionPlansOnly$Cost..per.year.=="70000 to 100000",

@@ -13,14 +13,14 @@ library(car)
 library(MuMIn)
 
 ###New files from Josh - Feb 2021, reviewed by RTB June 2021
-Directory<-"C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data"
+Directory<-"C:\\Users\\rbuxton\\Documents\\GitHub\\SARActionvsRM\\Data"
 Files<-list.files(Directory, full.names = TRUE)
 
 ##Action RM
 ActionData=read.csv(Files[1])
 
 #Clean the action data set
-source("C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Functions\\CleanSpreadsheet_01.R")
+source("C:\\Users\\rbuxton\\Documents\\GitHub\\SARActionvsRM\\Functions\\CleanSpreadsheet_01.R")
 FinalList<-CleanSpreadsheet(ActionData)
 
 #Summarize by species
@@ -164,8 +164,8 @@ m5<-betareg(PropRM~Consol_Taxa+NumberofThreats_s+Multispecies, data=Summary_APs_
 # DredgeTest<-dredge(m7) #Range size makes AIC worse
 
 ##TRY ADDING IN COST
-Summary_APs_cost<-Summary_APs[which(Summary_APs$Cost!=0),]
-m6<-betareg(PropRM~SARA.Status+Consol_Taxa+Multispecies+Cost, data=Summary_APs_cost, na.action=na.fail) #lower AIC
+# Summary_APs_cost<-Summary_APs[which(Summary_APs$Cost!=0),]
+# m6<-betareg(PropRM~SARA.Status+Consol_Taxa+Multispecies+Cost, data=Summary_APs_cost, na.action=na.fail) #lower AIC
 # DredgeTest<-dredge(m6)#Cost makes AIC worse
 
 ##MAKE A NICE TABLE
