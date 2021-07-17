@@ -13,7 +13,7 @@ library(car)
 library(MuMIn)
 
 ###New files from Josh - Feb 2021, reviewed by RTB June 2021
-Directory<-"C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data\\JGeauvreau"
+Directory<-"C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data"
 Files<-list.files(Directory, full.names = TRUE)
 
 ##Action RM
@@ -32,7 +32,7 @@ Summary_APs<-ddply(FinalList[[1]], c("SpeciesPopulation","Scientific.Name", "Com
                    Freq=length(Action))
 
 ###Join in THREATS
-Threats<-read.csv("C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data\\JGeauvreau\\Threat Codes - Updated Feb 2021.csv")
+Threats<-read.csv("C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data\\Threat Codes - Updated Feb 2021.csv")
 
 Threats$SpeciesPopulation<-paste(Threats$Common.Name, Threats$Scientific.Name, Threats$Population, sep="_")
 Threats$NumberofThreats<-sapply(strsplit(Threats$Threats, ","), length)

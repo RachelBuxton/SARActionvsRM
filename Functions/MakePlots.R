@@ -11,14 +11,14 @@ library(tidyr)
 library(wesanderson)
 
 ###New files from Josh - Feb 2021
-Directory<-"C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Data\\JGeauvreau"
+Directory<-"C:\\Users\\rbuxton\\Documents\\GitHub\\SARActionvsRM\\Data"
 Files<-list.files(Directory, full.names = TRUE)
 
 ##Action RM
 ActionData=read.csv(Files[1])
 
 #Clean the action data set
-source("C:\\Users\\rbuxton\\Documents\\Post doc_Carleton\\Canada_RMvsAction\\Functions\\CleanSpreadsheet_01.R")
+source("C:\\Users\\rbuxton\\Documents\\GitHub\\SARActionvsRM\\Functions\\CleanSpreadsheet_01.R")
 FinalList<-CleanSpreadsheet(ActionData)
 
 ################### PLOTS OF IUCN ACTION AND RM CODES
@@ -36,8 +36,6 @@ FullCodes_summary_long <- gather(FullCodes_summary, IUCNCode, PresAbs, colnames(
 FullCodes_summary_long<-subset(FullCodes_summary_long, PresAbs==1)
 FullCodes_summary_long$ActionvRM<-sapply(strsplit(as.character(FullCodes_summary_long$IUCNCode),'_'), "[", 1)
 FullCodes_summary_long$IUCN<-sapply(strsplit(as.character(FullCodes_summary_long$IUCNCode),'_'), "[", 2)
-
-# FullCodes_summary_long_summ<-ddply(FullCodes_summary_long, c("SpeciesPopulation", "ActionvRM", "IUCNCode"), summarize, Total=sum(PresAbs))
 
 #####Research and monitoring
 IUCNCodes_long_summary_RM<-subset(FullCodes_summary_long, ActionvRM=="ResearchMonitoring")
@@ -128,7 +126,7 @@ Action<-ggplot(IUCNCodes_long_summary_Action, aes(fill=IUCNfull, y=PresAbs, x=Br
   labs(fill = "IUCN Action category")+
   scale_fill_manual(values=pal)
 
-source("C:\\Users\\rbuxton\\Documents\\Post doc\\R workshop and code\\Multiplot.R")
+source("C:\\Users\\rbuxton\\Documents\\GitHub\\SARActionvsRM\\Functions\\Multiplot.R")
 multiplot(RM, Action, cols=2)
 
 ##Numbers for the results section
